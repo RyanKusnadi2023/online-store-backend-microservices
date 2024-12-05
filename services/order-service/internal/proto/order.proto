@@ -1,0 +1,26 @@
+syntax = "proto3";
+
+package order;
+
+option go_package = "common/proto";
+
+service OrderService {
+  rpc Checkout (CheckoutRequest) returns (CheckoutResponse);
+}
+
+message CheckoutRequest {
+  string user_id = 1;
+  repeated CartItem items = 2;
+  double total_price = 3;
+}
+
+message CartItem {
+  string product_id = 1;
+  int32 quantity = 2;
+  double price = 3;
+}
+
+message CheckoutResponse {
+  string order_id = 1;
+  string message = 2;
+}

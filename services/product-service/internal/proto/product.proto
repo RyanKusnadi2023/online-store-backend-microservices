@@ -1,0 +1,24 @@
+syntax = "proto3";
+
+package product;
+
+option go_package = "common/proto";
+
+service ProductService {
+  rpc GetProductsByCategory (GetProductsByCategoryRequest) returns (GetProductsByCategoryResponse);
+}
+
+message GetProductsByCategoryRequest {
+  string category = 1;
+}
+
+message Product {
+  string id = 1;
+  string name = 2;
+  double price = 3;
+  string category = 4;
+}
+
+message GetProductsByCategoryResponse {
+  repeated Product products = 1;
+}
